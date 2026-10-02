@@ -103,3 +103,13 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 800px) {
   .gallery-featured { grid-column: span 2; grid-row: span 2; }
 }
+
+
+.language-switcher { display: flex; align-items: center; gap: 6px; margin-left: 24px; font-size: 13px; white-space: nowrap; }
+.language-button { border: 0; background: transparent; padding: 4px 2px; color: #777; font: inherit; font-weight: 600; cursor: pointer; }
+.language-button.active { color: #222; font-weight: 800; }
+.language-button:hover { opacity: .6; }
+@media (max-width: 800px) {
+  .language-switcher { position: absolute; top: 14px; right: 58px; margin: 0; }
+  .language-button { padding: 5px 2px; }
+}
