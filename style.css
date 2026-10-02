@@ -47,14 +47,32 @@ a { color: inherit; text-decoration: none; }
 .cta-section p { opacity: .8; }
 .footer { padding: 25px 5%; text-align: center; font-size: 12px; color: #777; }
 @media (max-width: 800px) {
-  .nav { position: absolute; top: 78px; left: 0; right: 0; display: none; flex-direction: column; gap: 0; padding: 10px 5%; background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,.08); }
+  .site-header { padding: 14px 5%; }
+  .nav { position: absolute; top: 70px; left: 0; right: 0; display: none; flex-direction: column; gap: 0; padding: 10px 5%; background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,.08); }
   .nav.open { display: flex; }
   .nav a { padding: 12px 0; }
   .menu-toggle { display: block; }
+  .brand-mark { width: 40px; height: 40px; }
   .about-grid, .events-grid, .location-card { grid-template-columns: 1fr; }
   .about-grid > div:first-child { grid-column: auto; }
   .cta-section { flex-direction: column; align-items: flex-start; }
   .brand-name { display: none; }
+  .hero { min-height: 100svh; background-position: 58% center; }
+  .hero-content { width: 90%; padding-top: 80px; }
+  .hero h1 { max-width: 100%; font-size: clamp(38px, 11vw, 54px); letter-spacing: -1px; }
+  .hero-text { max-width: 100%; font-size: 16px; }
+  .hero-actions { flex-wrap: wrap; margin-top: 24px; }
+  .section { padding: 75px 5%; }
+  .section-heading { margin-bottom: 35px; }
+  .section-heading h2 { font-size: clamp(30px, 9vw, 42px); }
+  .event-card { gap: 14px; padding: 22px; }
+  .event-date { min-width: 68px; padding-right: 12px; }
+  .event-date strong { font-size: 20px; }
+  .event-date span { font-size: 7px; letter-spacing: .7px; }
+  .location-card { gap: 20px; padding: 22px; }
+  .map-placeholder, .map-placeholder iframe { min-height: 260px; }
+  .contact-card { padding: 22px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; gap: 12px; }
 }
 
 .contact-grid { width: min(900px, 100%); margin: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -83,6 +101,5 @@ a { color: inherit; text-decoration: none; }
 .gallery-placeholder small { font-size: 12px; }
 
 @media (max-width: 800px) {
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
   .gallery-featured { grid-column: span 2; grid-row: span 2; }
 }
