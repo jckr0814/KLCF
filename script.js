@@ -14,10 +14,10 @@ document.querySelectorAll(".nav a").forEach(link => {
 const translations = {
   zh: {
     lang: "zh-CN",
-    title: "吉隆坡基督徒团契",
-    description: "吉隆坡基督徒团契——一个在吉隆坡的基督徒团契群体。",
+    title: "接棒者基督教会",
+    description: "接棒者基督教会——一个在吉隆坡的基督徒团契群体。",
     nav: ["首页", "关于我们", "活动", "地点", "照片集", "联系我们"],
-    heroEyebrow: "吉隆坡基督徒团契",
+    heroEyebrow: "接棒者基督教会",
     heroTitle: "在信心、盼望与爱中一同成长。",
     heroText: "一个敬拜上帝、建立真挚关系，并在基督徒群体中一同成长的地方。",
     heroButtons: ["近期活动", "了解更多"],
@@ -26,7 +26,7 @@ const translations = {
     aboutTitle: "Be a history maker and a world changer!",
     aboutIntro: "认识一个委身于敬拜上帝、在祂的话语中成长、建立真挚团契，并以基督的爱关怀他人的群体。",
     aboutText: [
-      "吉隆坡基督徒团契是一个让我们一同敬拜上帝、在信心中成长，并彼此鼓励的基督徒群体。",
+      "接棒者基督教会是一个让我们一同敬拜上帝、在信心中成长，并彼此鼓励的基督徒群体。",
       "我们盼望建立一个温暖而友善的团契，让大家建立真挚的关系、更加认识圣经，并在日常生活中活出信仰。"
     ],
     cards: [
@@ -68,7 +68,9 @@ const translations = {
   en: {
     lang: "en",
     title: "Kuala Lumpur Christian Fellowship",
+    brand: "接棒者基督教会",
     description: "Kuala Lumpur Christian Fellowship — a Christian fellowship community in Kuala Lumpur.",
+    brand: "Kuala Lumpur Christian Fellowship",
     nav: ["Home", "About", "Events", "Location", "Gallery", "Contact"],
     heroEyebrow: "Kuala Lumpur Christian Fellowship",
     heroTitle: "Growing together in faith, hope and love.",
@@ -134,11 +136,14 @@ function applyLanguage(lang) {
   document.querySelector('meta[name="description"]')?.setAttribute("content", t.description);
 
   document.querySelectorAll(".nav a").forEach((link, i) => link.textContent = t.nav[i]);
+  setText(".brand-name", lang === "zh" ? "接棒者基督教会" : "Kuala Lumpur Christian Fellowship");
+  document.querySelector(".brand")?.setAttribute("aria-label", lang === "zh" ? "接棒者基督教会首页" : "Kuala Lumpur Christian Fellowship home");
   setText(".hero .eyebrow", t.heroEyebrow);
   setText(".hero h1", t.heroTitle);
   setText(".hero-text", t.heroText);
   document.querySelectorAll(".hero-actions .button").forEach((button, i) => button.textContent = t.heroButtons[i]);
 
+  document.querySelector(".scroll-hint")?.setAttribute("aria-label", t.scroll);
   setText(".scroll-hint", "↓");
 
   const aboutHeading = document.querySelector("#about .section-heading");
@@ -172,7 +177,7 @@ function applyLanguage(lang) {
   galleryHeading.querySelector(".eyebrow").textContent = t.galleryEyebrow;
   galleryHeading.querySelector("h2").textContent = t.galleryTitle;
   galleryHeading.querySelector("p:last-child").textContent = t.galleryIntro;
-  document.querySelector(".gallery-featured img").alt = lang === "zh" ? "吉隆坡基督徒团契聚会" : "Kuala Lumpur Christian Fellowship gathering";
+  document.querySelector(".gallery-featured img").alt = lang === "zh" ? "接棒者基督教会聚会" : "Kuala Lumpur Christian Fellowship gathering";
   document.querySelector(".gallery-featured figcaption").textContent = t.title;
   document.querySelectorAll(".gallery-placeholder").forEach((item, i) => {
     item.querySelector("strong").textContent = t.galleryLabels[i];
@@ -185,6 +190,9 @@ function applyLanguage(lang) {
   locationHeading.querySelector("p:last-child").textContent = t.locationIntro;
   document.querySelector("#location .location-card h3").textContent = t.title;
   document.querySelector("#location .text-link").textContent = t.maps;
+  document.querySelector("#location .text-link")?.setAttribute("aria-label", t.maps);
+  document.querySelector("#location .map-placeholder")?.setAttribute("aria-label", lang === "zh" ? "接棒者基督教会地点地图" : "Kuala Lumpur Christian Fellowship location map");
+  document.querySelector("#location iframe")?.setAttribute("title", lang === "zh" ? "接棒者基督教会地点地图" : "Kuala Lumpur Christian Fellowship location map");
 
   const contactHeading = document.querySelector("#contact .section-heading");
   contactHeading.querySelector(".eyebrow").textContent = t.contactEyebrow;
