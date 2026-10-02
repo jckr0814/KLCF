@@ -1,0 +1,56 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Inter, Arial, sans-serif; color: #202020; background: #fff; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+.site-header { position: fixed; inset: 0 0 auto; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 18px 5%; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0,0,0,.06); }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #222; color: #fff; font-size: 12px; letter-spacing: 1px; }
+.brand-name { max-width: 260px; line-height: 1.15; font-size: 14px; }
+.nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
+.nav a:hover, .text-link:hover { opacity: .6; }
+.menu-toggle { display: none; border: 0; background: none; font-size: 26px; cursor: pointer; }
+.hero { min-height: 100vh; display: grid; place-items: center; position: relative; overflow: hidden; color: #fff; background: linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.42) 55%, rgba(0,0,0,.18) 100%), url("klcf.jpg") center/cover no-repeat; }
+.hero-content { width: min(1100px, 90%); padding-top: 70px; margin-right: auto; margin-left: auto; }
+.eyebrow { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 700; }
+.hero h1 { max-width: 720px; margin: 0 0 20px; font-size: clamp(42px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; }
+.hero-text { max-width: 610px; font-size: 18px; opacity: .92; }
+.hero-actions { display: flex; gap: 12px; margin-top: 30px; }
+.button { display: inline-block; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 14px; transition: transform .2s, opacity .2s; }
+.button:hover { transform: translateY(-2px); }
+.button-primary { background: #fff; color: #222; }
+.button-secondary { border: 1px solid rgba(255,255,255,.7); color: #fff; }
+.scroll-hint { position: absolute; bottom: 25px; left: 50%; font-size: 28px; opacity: .8; }
+.section { padding: 100px 5%; }
+.section-alt { background: #f5f5f2; }
+.section-heading { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+.section-heading h2, .cta-section h2 { margin: 0 0 12px; font-size: clamp(32px, 4vw, 50px); line-height: 1.1; }
+.section-heading > p:last-child { color: #666; }
+.about-grid, .events-grid { width: min(1100px, 100%); margin: auto; display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+.about-grid > div:first-child { grid-column: span 1; }
+.info-card, .event-card, .location-card { border: 1px solid #e4e4e4; background: #fff; border-radius: 18px; padding: 28px; }
+.info-card span { font-size: 26px; }
+.info-card h3, .event-card h3, .location-card h3 { margin: 8px 0 5px; }
+.info-card p, .event-card p, .location-card p { margin: 0; color: #666; }
+.events-grid { grid-template-columns: repeat(3, 1fr); }
+.event-card { display: flex; gap: 18px; align-items: flex-start; }
+.event-date { min-width: 58px; text-align: center; border-right: 1px solid #ddd; padding-right: 15px; }
+.event-date strong { display: block; font-size: 26px; line-height: 1; }
+.event-date span { font-size: 9px; letter-spacing: 1px; color: #777; }
+.location-card { width: min(1100px, 100%); margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.location-icon { font-size: 30px; }
+.text-link { display: inline-block; margin-top: 15px; font-weight: 700; }
+.map-placeholder { min-height: 250px; border-radius: 14px; display: grid; place-items: center; background: #e9e9e5; color: #777; }
+.cta-section { padding: 90px 5%; display: flex; justify-content: space-between; align-items: center; gap: 30px; background: #202020; color: #fff; }
+.cta-section > div { max-width: 700px; }
+.cta-section p { opacity: .8; }
+.footer { padding: 25px 5%; text-align: center; font-size: 12px; color: #777; }
+@media (max-width: 800px) {
+  .nav { position: absolute; top: 78px; left: 0; right: 0; display: none; flex-direction: column; gap: 0; padding: 10px 5%; background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,.08); }
+  .nav.open { display: flex; }
+  .nav a { padding: 12px 0; }
+  .menu-toggle { display: block; }
+  .about-grid, .events-grid, .location-card { grid-template-columns: 1fr; }
+  .about-grid > div:first-child { grid-column: auto; }
+  .cta-section { flex-direction: column; align-items: flex-start; }
+  .brand-name { display: none; }
+}
