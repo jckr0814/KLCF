@@ -13,8 +13,8 @@ a { color: inherit; text-decoration: none; }
 .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center center; z-index: 0; }
 .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(0,0,0,.68) 0%, rgba(0,0,0,.38) 48%, rgba(0,0,0,.08) 85%); pointer-events: none; }
 .hero-content { position: relative; z-index: 2; width: min(1100px, 90%); padding-top: 70px; margin-right: auto; margin-left: auto; }
-.eyebrow { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 700; }
-.hero .eyebrow { font-size: clamp(22px, 3vw, 34px); letter-spacing: 1px; margin-bottom: 18px; text-transform: none; }
+.eyebrow { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 20px; font-weight: 800; }
+.hero .eyebrow { display: inline-block; padding: 8px 16px; border-radius: 10px; background: rgba(20,20,20,.72); border: 1px solid rgba(255,255,255,.45); color: #f2d18a; font-size: clamp(24px, 3vw, 36px); letter-spacing: 1px; margin-bottom: 18px; text-transform: none; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
 .hero h1 { max-width: 600px; margin: 0 0 20px; font-size: clamp(42px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; }
 .hero-text { max-width: 500px; font-size: 18px; opacity: .92; }
 .hero-actions { display: flex; gap: 12px; margin-top: 30px; }
@@ -64,12 +64,13 @@ a { color: inherit; text-decoration: none; }
   .hero-image { object-fit: contain; }
   .hero-overlay { background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.28) 70%, rgba(0,0,0,.08) 100%); }
   .hero-content { width: 90%; padding-top: 80px; }
-  .hero .eyebrow { font-size: clamp(24px, 7vw, 34px); margin-bottom: 14px; }
+  .hero .eyebrow { font-size: clamp(22px, 7vw, 32px); padding: 7px 13px; margin-bottom: 14px; }
   .hero h1 { max-width: 100%; font-size: clamp(38px, 11vw, 54px); letter-spacing: -1px; }
   .hero-text { max-width: 100%; font-size: 16px; }
   .hero-actions { flex-wrap: wrap; margin-top: 24px; }
   .section { padding: 75px 5%; }
   .section-heading { margin-bottom: 35px; }
+  .section-heading .eyebrow { font-size: 18px; letter-spacing: 1.5px; }
   .section-heading h2 { font-size: clamp(36px, 9vw, 48px); }
   .section-heading > p:last-child { font-size: 16px; }
   .event-card { gap: 14px; padding: 22px; }
