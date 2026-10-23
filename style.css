@@ -5,7 +5,7 @@ a { color: inherit; text-decoration: none; }
 
 .site-header { position: fixed; inset: 0 0 auto; z-index: 1000; display: flex; align-items: center; gap: 24px; padding: 16px 5%; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0,0,0,.06); }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; flex-shrink: 0; }
-.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #222; color: #fff; font-size: 12px; letter-spacing: 1px; }
+.brand-logo { display: block; width: 58px; height: 58px; object-fit: contain; flex: 0 0 auto; }
 .brand-name { max-width: 260px; line-height: 1.15; font-size: 14px; }
 .nav { display: flex; justify-content: center; flex: 1; gap: clamp(14px, 2.1vw, 28px); font-size: 14px; font-weight: 600; }
 .nav a:hover, .text-link:hover { opacity: .6; }
@@ -91,7 +91,7 @@ a { color: inherit; text-decoration: none; }
   .nav.open { display: flex; }
   .nav a { padding: 12px 0; }
   .menu-toggle { display: block; }
-  .brand-mark { width: 40px; height: 40px; }
+  .brand-logo { width: 54px; height: 54px; }
   .about-grid, .events-grid, .location-card { grid-template-columns: 1fr; }
   .about-grid > div:first-child { grid-column: auto; }
   .cta-section { flex-direction: column; align-items: flex-start; }
