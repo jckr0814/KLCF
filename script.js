@@ -98,7 +98,7 @@ const translations = {
       ["Children's Worship", "Every Sunday · 10:00 AM – 12:00 PM", "Children worship God and grow together in faith."],
       ["Sunday Prayer Meeting", "Every Sunday · 10:00 AM – 10:30 AM", "Pray together for the church, fellowship and one another's needs."],
       ["Super Kids", "Every Saturday · 3:00 PM – 5:00 PM", "A time for children to learn, connect and enjoy fellowship."],
-      ["Youth Fellowship", "Every Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."]
+      ["Youth Fellowship", "Every other Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."]
     ],
     weekly: "Weekly",
     everyTwoWeeks: "Every 2 weeks",
@@ -169,7 +169,7 @@ function applyLanguage(lang) {
     const paragraphs = card.querySelectorAll("p");
     if (paragraphs[0]) paragraphs[0].textContent = event[1];
     if (paragraphs[1]) paragraphs[1].textContent = event[2];
-    card.querySelector(".event-date span").textContent = t.weekly;
+    card.querySelector(".event-date span").textContent = i === 4 ? t.everyTwoWeeks : t.weekly;
   });
 
   const galleryHeading = document.querySelector("#gallery .section-heading");
