@@ -5,7 +5,7 @@ a { color: inherit; text-decoration: none; }
 
 .site-header { position: fixed; inset: 0 0 auto; z-index: 1000; display: flex; align-items: center; gap: 24px; padding: 16px 5%; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0,0,0,.06); }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; flex-shrink: 0; }
-.brand-logo { display: block; width: 58px; height: 58px; object-fit: contain; flex: 0 0 auto; }
+.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #222; color: #fff; font-size: 12px; letter-spacing: 1px; flex: 0 0 auto; }
 .brand-name { max-width: 260px; line-height: 1.15; font-size: 14px; }
 .nav { display: flex; justify-content: center; flex: 1; gap: clamp(14px, 2.1vw, 28px); font-size: 14px; font-weight: 600; }
 .nav a:hover, .text-link:hover { opacity: .6; }
@@ -45,7 +45,7 @@ a { color: inherit; text-decoration: none; }
 .event-card { display: flex; gap: 18px; align-items: flex-start; }
 .event-date { min-width: 82px; text-align: center; border-right: 1px solid #ddd; padding-right: 15px; }
 .event-date strong { display: block; font-size: 22px; line-height: 1.1; }
-.event-date span { display: block; margin-top: 5px; font-size: 8px; letter-spacing: 1px; color: #777; }
+.event-date span { display: block; margin-top: 7px; font-size: 14px; line-height: 1.35; font-weight: 700; letter-spacing: .2px; color: #444; }
 .event-note { font-weight: 700; margin-top: 8px !important; }
 
 .gallery-grid { width: min(1100px, 100%); margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 18px; }
@@ -91,7 +91,7 @@ a { color: inherit; text-decoration: none; }
   .nav.open { display: flex; }
   .nav a { padding: 12px 0; }
   .menu-toggle { display: block; }
-  .brand-logo { width: 54px; height: 54px; }
+  .brand-mark { width: 40px; height: 40px; }
   .about-grid, .events-grid, .location-card { grid-template-columns: 1fr; }
   .about-grid > div:first-child { grid-column: auto; }
   .cta-section { flex-direction: column; align-items: flex-start; }
@@ -110,9 +110,11 @@ a { color: inherit; text-decoration: none; }
   .section-heading h2 { font-size: clamp(36px, 9vw, 48px); }
   .section-heading > p:last-child { font-size: 16px; }
   .event-card { gap: 14px; padding: 22px; }
+  .event-card p { font-size: 16px; line-height: 1.55; }
+  .event-card h3 { font-size: 20px; }
   .event-date { min-width: 68px; padding-right: 12px; }
   .event-date strong { font-size: 20px; }
-  .event-date span { font-size: 7px; letter-spacing: .7px; }
+  .event-date span { font-size: 13px; letter-spacing: 0; }
   .location-card { gap: 20px; padding: 22px; }
   .map-placeholder, .map-placeholder iframe { min-height: 260px; }
   .contact-grid { grid-template-columns: 1fr; gap: 14px; }
