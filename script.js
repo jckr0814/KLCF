@@ -100,8 +100,8 @@ const translations = {
       ["Super Kids", "Every Saturday · 3:00 PM – 5:00 PM", "A time for children to learn, connect and enjoy fellowship."],
       ["Youth Fellowship", "Every Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."]
     ],
-    weekly: "WEEKLY",
-    everyTwoWeeks: "EVERY 2 WEEKS",
+    weekly: "Weekly",
+    everyTwoWeeks: "Every 2 weeks",
     galleryEyebrow: "Life At KLCF",
     galleryTitle: "Moments Together",
     galleryIntro: "A glimpse of worship, fellowship, learning and the people who make KLCF a community.",
