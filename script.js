@@ -23,7 +23,7 @@ const translations = {
     heroButtons: ["近期活动", "了解更多"],
     scroll: "滚动至关于我们",
     aboutEyebrow: "关于我们",
-    aboutTitle: "Be a history maker and a world changer!",
+    aboutTitle: "我们要成为历史的缔造者，和世界的震撼者！",
     aboutIntro: "认识一个委身于敬拜上帝、在祂的话语中成长、建立真挚团契，并以基督的爱关怀他人的群体。",
     aboutText: [
       "接棒者基督教会是一个让我们一同敬拜上帝、在信心中成长，并彼此鼓励的基督徒群体。",
@@ -39,11 +39,11 @@ const translations = {
     eventsTitle: "常规聚会",
     eventsIntro: "通过我们的常规聚会、敬拜、课程和团契活动，与 KLCF 保持联系。",
     events: [
-      ["主日崇拜", "每逢星期日 · 上午 10:00 – 12:00", "主日崇拜后一起享用午餐。", "一同敬拜、聆听上帝的话语，并享受团契时光。"],
-      ["主日学", "每逢星期六 · 下午 3:00 – 5:00", "", "主日学"],
-      ["乐器培训班", "星期六 · 每两周一次 · 下午 5:30 – 7:00", "", "乐器培训班 · 少年团契开始前。"],
-      ["少年团契", "星期六 · 每两周一次 · 晚上 7:30 – 9:00", "", "让青少年一同成长、交流与团契的时间。"],
-      ["Setapak 小组", "星期六 · 每两周一次 · 晚上 7:30 – 9:00", "", "彼此联系、分享，并一同在信仰中成长。"]
+      ["主日崇拜", "Every Sunday · 10:00 AM – 12:00 PM".replace("Every Sunday", "每逢星期日").replace("10:00 AM", "上午 10:00").replace("12:00 PM", "中午 12:00"), "一同敬拜上帝、聆听祂的话语，并享受团契时光。"],
+      ["儿童崇拜", "每逢星期日 · 上午 10:00 – 中午 12:00", "让孩子们一同敬拜上帝，在信仰中成长。"],
+      ["主日祷告会", "每逢星期日 · 上午 10:00 – 10:30", "一同祷告，将教会、团契与彼此的需要交托给上帝。"],
+      ["Super Kids 儿童聚会", "每逢星期六 · 下午 3:00 – 5:00", "适合孩子们参与的学习与团契时间。"],
+      ["青年团契", "每逢星期六 · 晚上 7:00 – 9:00", "青年人彼此认识、分享，并一同在信仰中成长。"]
     ],
     weekly: "每周",
     everyTwoWeeks: "每两周",
@@ -78,7 +78,7 @@ const translations = {
     heroButtons: ["Upcoming Events", "Learn More"],
     scroll: "Scroll to About",
     aboutEyebrow: "About Us",
-    aboutTitle: "Be a history maker and a world changer!",
+    aboutTitle: "We Want To Be A History Maker & A World Shaker!",
     aboutIntro: "Discover a community committed to worshipping God, growing in His Word, building meaningful fellowship and reaching out to others with the love of Christ.",
     aboutText: [
       "Kuala Lumpur Christian Fellowship is a Christian community where we come together to worship God, grow in faith and encourage one another.",
@@ -94,11 +94,11 @@ const translations = {
     eventsTitle: "Regular Gatherings",
     eventsIntro: "Stay connected with KLCF through our regular gatherings, worship, classes and fellowship activities.",
     events: [
-      ["Sunday Service", "Every Sunday · 10:00 AM – 12:00 PM", "Lunch together after the Sunday service.", "Join us for worship, God's Word and fellowship."],
-      ["Sunday School", "Every Saturday · 3:00 PM – 5:00 PM", "", "Sunday School"],
-      ["Instrument Training Class", "Saturday · Every two weeks · 5:30 PM – 7:00 PM", "", "Instrument Training Class · Before the youth gathering."],
-      ["Youth Fellowship", "Saturday · Every two weeks · 7:30 PM – 9:00 PM", "", "A time for young people to grow and fellowship together."],
-      ["Setapak Cell Group", "Saturday · Every two weeks · 7:30 PM – 9:00 PM", "", "A time to connect, share and grow together in faith."]
+      ["Sunday Service", "Every Sunday · 10:00 AM – 12:00 PM", "Worship God, hear His Word and enjoy fellowship together."],
+      ["Children's Worship", "Every Sunday · 10:00 AM – 12:00 PM", "Children worship God and grow together in faith."],
+      ["Sunday Prayer Meeting", "Every Sunday · 10:00 AM – 10:30 AM", "Pray together for the church, fellowship and one another's needs."],
+      ["Super Kids", "Every Saturday · 3:00 PM – 5:00 PM", "A time for children to learn, connect and enjoy fellowship."],
+      ["Youth Fellowship", "Every Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."]
     ],
     weekly: "WEEKLY",
     everyTwoWeeks: "EVERY 2 WEEKS",
@@ -164,13 +164,12 @@ function applyLanguage(lang) {
   eventHeading.querySelector("p:last-child").textContent = t.eventsIntro;
   document.querySelectorAll("#events .event-card").forEach((card, i) => {
     const event = t.events[i];
+    if (!event) return;
     card.querySelector("h3").textContent = event[0];
-    card.querySelectorAll("p")[0].textContent = event[1];
-    const note = card.querySelector(".event-note");
-    if (note) note.textContent = event[2];
     const paragraphs = card.querySelectorAll("p");
-    paragraphs[paragraphs.length - 1].textContent = event[3];
-    card.querySelector(".event-date span").textContent = i < 2 ? t.weekly : t.everyTwoWeeks;
+    if (paragraphs[0]) paragraphs[0].textContent = event[1];
+    if (paragraphs[1]) paragraphs[1].textContent = event[2];
+    card.querySelector(".event-date span").textContent = t.weekly;
   });
 
   const galleryHeading = document.querySelector("#gallery .section-heading");
