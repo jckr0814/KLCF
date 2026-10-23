@@ -99,11 +99,11 @@ const translations = {
       ["Children's Worship", "Every Sunday · 10:00 AM – 12:00 PM", "Children worship God and grow together in faith."],
       ["Sunday Prayer Meeting", "Every Sunday · 10:00 AM – 10:30 AM", "Pray together for the church, fellowship and one another's needs."],
       ["Super Kids", "Every Saturday · 3:00 PM – 5:00 PM", "A time for children to learn, connect and enjoy fellowship."],
-      ["Youth Fellowship", "Every other Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."],
-      ["Happy Music Class", "Every other Saturday · 5:30 PM – 6:30 PM", "Free lessons in piano, drums and guitar. Location: 3rd floor, KLCF."]
+      ["Youth Fellowship", "Biweekly · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."],
+      ["Happy Music Class", "Biweekly · 5:30 PM – 6:30 PM", "Free lessons in piano, drums and guitar. Location: 3rd floor, KLCF."]
     ],
     weekly: "Weekly",
-    everyTwoWeeks: "Every 2 weeks",
+    everyTwoWeeks: "Biweekly",
     galleryEyebrow: "Life At KLCF",
     galleryTitle: "Moments Together",
     galleryIntro: "A glimpse of worship, fellowship, learning and the people who make KLCF a community.",
