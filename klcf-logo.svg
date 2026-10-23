@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" role="img" aria-labelledby="title">
+  <title id="title">KLCF cross and dove logo</title>
+  <g fill="none" stroke="#252525" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="68" cy="66" rx="43" ry="55"/>
+    <path d="M68 14 V119 M28 54 H108"/>
+    <path d="M74 74 C88 70 99 55 111 38 C121 25 132 25 145 26 C135 36 130 47 121 57 C112 67 101 74 89 76"/>
+    <path d="M72 77 C82 86 95 87 107 78"/>
+  </g>
+  <path d="M86 71 C104 62 113 43 126 30 C132 24 139 24 145 26 C137 35 132 48 122 58 C112 69 100 76 87 78 Z" fill="#252525" opacity=".9"/>
+  <text x="82" y="139" text-anchor="middle" font-family="Georgia,serif" font-size="27" font-weight="700" fill="#252525">KLCF</text>
+  <path d="M39 148 H124" stroke="#252525" stroke-width="1.5"/>
+</svg>
