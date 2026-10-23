@@ -43,7 +43,8 @@ const translations = {
       ["儿童崇拜", "每逢星期日 · 上午 10:00 – 中午 12:00", "让孩子们一同敬拜上帝，在信仰中成长。"],
       ["主日祷告会", "每逢星期日 · 上午 10:00 – 10:30", "一同祷告，将教会、团契与彼此的需要交托给上帝。"],
       ["Super Kids 儿童聚会", "每逢星期六 · 下午 3:00 – 5:00", "适合孩子们参与的学习与团契时间。"],
-      ["青年团契", "每逢星期六 · 晚上 7:00 – 9:00", "青年人彼此认识、分享，并一同在信仰中成长。"]
+      ["青年团契", "每逢星期六 · 晚上 7:00 – 9:00", "青年人彼此认识、分享，并一同在信仰中成长."],
+      ["快乐音乐班", "隔周星期六 · 下午 5:30 – 6:30", "免费学习钢琴、鼓和吉他。地点：KLCF 三楼。"]
     ],
     weekly: "每周",
     everyTwoWeeks: "每两周",
@@ -98,7 +99,8 @@ const translations = {
       ["Children's Worship", "Every Sunday · 10:00 AM – 12:00 PM", "Children worship God and grow together in faith."],
       ["Sunday Prayer Meeting", "Every Sunday · 10:00 AM – 10:30 AM", "Pray together for the church, fellowship and one another's needs."],
       ["Super Kids", "Every Saturday · 3:00 PM – 5:00 PM", "A time for children to learn, connect and enjoy fellowship."],
-      ["Youth Fellowship", "Every other Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."]
+      ["Youth Fellowship", "Every other Saturday · 7:00 PM – 9:00 PM", "A time for young people to connect, share and grow in faith."],
+      ["Happy Music Class", "Every other Saturday · 5:30 PM – 6:30 PM", "Free lessons in piano, drums and guitar. Location: 3rd floor, KLCF."]
     ],
     weekly: "Weekly",
     everyTwoWeeks: "Every 2 weeks",
@@ -169,7 +171,7 @@ function applyLanguage(lang) {
     const paragraphs = card.querySelectorAll("p");
     if (paragraphs[0]) paragraphs[0].textContent = event[1];
     if (paragraphs[1]) paragraphs[1].textContent = event[2];
-    card.querySelector(".event-date span").textContent = i === 4 ? t.everyTwoWeeks : t.weekly;
+    card.querySelector(".event-date span").textContent = (i === 4 || i === 5) ? t.everyTwoWeeks : t.weekly;
   });
 
   const galleryHeading = document.querySelector("#gallery .section-heading");
