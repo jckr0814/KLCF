@@ -154,6 +154,7 @@ function applyLanguage(lang) {
     const aboutTitle = aboutHeading.querySelector("h2");
     if (lang === "zh") {
       aboutTitle.innerHTML = '<span class="about-title-line">我们要成为历史的缔造者，</span><span class="about-title-line">和世界的震撼者！</span>';
+      aboutTitle.setAttribute("aria-label", t.aboutTitle);
     } else {
       aboutTitle.textContent = t.aboutTitle;
     }
