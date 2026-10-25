@@ -191,11 +191,7 @@ function applyLanguage(lang) {
     item.querySelector("small").textContent = t.addPhoto;
   });
 
-  const locationHeading = document.querySelector("#location .section-heading");
-  locationHeading.querySelector(".eyebrow").textContent = t.locationEyebrow;
-  locationHeading.querySelector("h2").textContent = t.locationTitle;
-  locationHeading.querySelector("p:last-child").textContent = t.locationIntro;
-  document.querySelector("#location .location-card h3").textContent = t.title;
+  document.querySelector("#location .location-card h3").textContent = t.locationTitle;
   document.querySelector("#location .text-link").textContent = t.maps;
   document.querySelector("#location .text-link")?.setAttribute("aria-label", t.maps);
   document.querySelector("#location .map-placeholder")?.setAttribute("aria-label", lang === "zh" ? "接棒者基督教会地点地图" : "Kuala Lumpur Christian Fellowship location map");
@@ -237,6 +233,16 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
   const photos = () => Array.from(document.querySelectorAll(".gallery-grid .gallery-item img"));
   let activeIndex = 0;
   let previousOverflow = "";
+  let zoomLevel = 1;
+
+  function setZoom(level) {
+    zoomLevel = Math.max(1, Math.min(4, level));
+    preview.style.setProperty("--lightbox-zoom", zoomLevel);
+    preview.classList.toggle("is-zoomed", zoomLevel > 1);
+    lightbox.querySelector(".lightbox-zoom-reset").textContent = Math.round(zoomLevel * 100) + "%";
+    lightbox.querySelector(".lightbox-zoom-out").disabled = zoomLevel <= 1;
+    lightbox.querySelector(".lightbox-zoom-in").disabled = zoomLevel >= 4;
+  }
 
   function showPhoto(index) {
     const items = photos();
@@ -245,6 +251,7 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
     const source = items[activeIndex];
     preview.src = source.currentSrc || source.src;
     preview.alt = source.alt || "";
+    setZoom(1);
     caption.textContent = source.closest("figure")?.querySelector("figcaption")?.textContent || source.alt || "";
     const multiple = items.length > 1;
     lightbox.querySelector(".lightbox-prev").hidden = !multiple;
@@ -272,8 +279,20 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
   lightbox.querySelector(".lightbox-close").addEventListener("click", closePhoto);
   lightbox.querySelector(".lightbox-prev").addEventListener("click", () => showPhoto(activeIndex - 1));
   lightbox.querySelector(".lightbox-next").addEventListener("click", () => showPhoto(activeIndex + 1));
+  lightbox.querySelector(".lightbox-zoom-in").addEventListener("click", () => setZoom(zoomLevel + 0.5));
+  lightbox.querySelector(".lightbox-zoom-out").addEventListener("click", () => setZoom(zoomLevel - 0.5));
+  lightbox.querySelector(".lightbox-zoom-reset").addEventListener("click", () => setZoom(1));
+  preview.addEventListener("dblclick", event => {
+    event.preventDefault();
+    setZoom(zoomLevel > 1 ? 1 : 2);
+  });
+  lightbox.addEventListener("wheel", event => {
+    if (!lightbox.classList.contains("is-open")) return;
+    event.preventDefault();
+    setZoom(zoomLevel + (event.deltaY < 0 ? 0.25 : -0.25));
+  }, { passive: false });
   lightbox.addEventListener("click", event => {
-    if (event.target === lightbox || event.target === preview) closePhoto();
+    if (event.target === lightbox) closePhoto();
   });
   document.addEventListener("keydown", event => {
     if (!lightbox.classList.contains("is-open")) return;
