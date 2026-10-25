@@ -127,3 +127,28 @@ a { color: inherit; text-decoration: none; }
   .language-switcher { position: absolute; top: 14px; right: 58px; margin: 0; }
   .language-button { padding: 5px 2px; }
 }
+
+/* Location information is grouped inside the Contact section. */
+.location-section { width: min(1100px, 100%); margin: 0 auto 42px; scroll-margin-top: 100px; }
+.location-section .section-heading { margin-bottom: 28px; }
+.location-section .section-heading h2 { font-size: clamp(30px, 4vw, 42px); }
+.location-section .location-card { margin-top: 0; }
+
+/* Facebook-style gallery image preview. */
+.gallery-item img { cursor: zoom-in; }
+.gallery-lightbox { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; gap: 18px; padding: 60px 28px 28px; background: rgba(0,0,0,.94); }
+.gallery-lightbox.is-open { display: flex; }
+.lightbox-content { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: min(100%, 1100px); height: 100%; margin: 0; }
+.lightbox-content img { display: block; max-width: 100%; max-height: calc(100% - 42px); width: auto; height: auto; object-fit: contain; cursor: zoom-out; }
+.lightbox-content figcaption { color: #fff; text-align: center; font-size: 15px; }
+.lightbox-close, .lightbox-prev, .lightbox-next { display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; cursor: pointer; line-height: 1; }
+.lightbox-close { position: absolute; top: 18px; right: 22px; width: 46px; height: 46px; font-size: 34px; }
+.lightbox-prev, .lightbox-next { flex: 0 0 44px; width: 44px; height: 44px; font-size: 34px; }
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,.28); }
+@media (max-width: 600px) {
+  .location-section { margin-bottom: 30px; }
+  .location-section .section-heading { margin-bottom: 22px; }
+  .gallery-lightbox { gap: 8px; padding: 64px 10px 20px; }
+  .lightbox-prev, .lightbox-next { flex-basis: 34px; width: 34px; height: 34px; font-size: 27px; }
+  .lightbox-content img { max-width: 100%; max-height: calc(100% - 38px); }
+}
