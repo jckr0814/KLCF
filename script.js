@@ -151,7 +151,12 @@ function applyLanguage(lang) {
   const aboutHeading = document.querySelector("#about .section-heading");
   if (aboutHeading) {
     aboutHeading.querySelector(".eyebrow").textContent = t.aboutEyebrow;
-    aboutHeading.querySelector("h2").textContent = t.aboutTitle;
+    const aboutTitle = aboutHeading.querySelector("h2");
+    if (lang === "zh") {
+      aboutTitle.innerHTML = '<span class="about-title-line">我们要成为历史的缔造者，</span><span class="about-title-line">和世界的震撼者！</span>';
+    } else {
+      aboutTitle.textContent = t.aboutTitle;
+    }
     aboutHeading.querySelector("p:last-child").textContent = t.aboutIntro;
   }
   document.querySelectorAll("#about .about-grid > div:first-child p").forEach((p, i) => p.textContent = t.aboutText[i]);
