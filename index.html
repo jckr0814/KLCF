@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="接棒者基督教会——一个在吉隆坡的基督徒团契群体。">
   <title>接棒者基督教会</title>
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
   <header class="site-header">
@@ -18,7 +18,7 @@
       <a href="#home">首页</a>
       <a href="#about">关于我们</a>
       <a href="#events">活动</a>
-      <a href="#location">地点</a>
+      <a href="#contact">地点</a>
       <a href="#gallery">照片集</a>
       <a href="#contact">联系我们</a>
     </nav>
@@ -202,7 +202,14 @@
       </div>
     </section>
 
-    <section id="location" class="section">
+    <section id="contact" class="section section-alt">
+      <div class="section-heading">
+        <p class="eyebrow">与我们联系</p>
+        <h2>我们期待与您联系。</h2>
+        <p>如果您有任何问题，欢迎联系我们；也可以关注 KLCF，获取最新的团契消息与公告。</p>
+      </div>
+
+    <div id="location" class="location-section">
       <div class="section-heading">
         <p class="eyebrow">联系我们</p>
         <h2>地点</h2>
@@ -225,14 +232,8 @@
           </iframe>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="contact" class="section section-alt">
-      <div class="section-heading">
-        <p class="eyebrow">与我们联系</p>
-        <h2>我们期待与您联系。</h2>
-        <p>如果您有任何问题，欢迎联系我们；也可以关注 KLCF，获取最新的团契消息与公告。</p>
-      </div>
 
       <div class="contact-grid">
         <a class="contact-card" href="tel:+60341481861">
@@ -256,10 +257,21 @@
     </section>
   </main>
 
+
+  <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="图片预览">
+    <button class="lightbox-close" type="button" aria-label="关闭图片预览">×</button>
+    <button class="lightbox-prev" type="button" aria-label="上一张图片">‹</button>
+    <figure class="lightbox-content">
+      <img src="" alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="lightbox-next" type="button" aria-label="下一张图片">›</button>
+  </div>
+
   <footer class="footer">
     <p>© <span id="year"></span> 接棒者基督教会。版权所有。</p>
   </footer>
 
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=15"></script>
 </body>
 </html>
