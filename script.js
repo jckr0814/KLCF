@@ -234,10 +234,20 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
   let activeIndex = 0;
   let previousOverflow = "";
   let zoomLevel = 1;
+  let panX = 0;
+  let panY = 0;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let startPanX = 0;
+  let startPanY = 0;
+  let dragging = false;
 
   function setZoom(level) {
     zoomLevel = Math.max(1, Math.min(4, level));
     preview.style.setProperty("--lightbox-zoom", zoomLevel);
+    if (zoomLevel === 1) { panX = 0; panY = 0; }
+    preview.style.setProperty("--lightbox-pan-x", panX + "px");
+    preview.style.setProperty("--lightbox-pan-y", panY + "px");
     preview.classList.toggle("is-zoomed", zoomLevel > 1);
     lightbox.querySelector(".lightbox-zoom-reset").textContent = Math.round(zoomLevel * 100) + "%";
     lightbox.querySelector(".lightbox-zoom-out").disabled = zoomLevel <= 1;
@@ -282,6 +292,33 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
   lightbox.querySelector(".lightbox-zoom-in").addEventListener("click", () => setZoom(zoomLevel + 0.5));
   lightbox.querySelector(".lightbox-zoom-out").addEventListener("click", () => setZoom(zoomLevel - 0.5));
   lightbox.querySelector(".lightbox-zoom-reset").addEventListener("click", () => setZoom(1));
+  preview.addEventListener("pointerdown", event => {
+    if (zoomLevel <= 1) return;
+    dragging = true;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    startPanX = panX;
+    startPanY = panY;
+    preview.classList.add("is-dragging");
+    preview.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  });
+  preview.addEventListener("pointermove", event => {
+    if (!dragging) return;
+    const maxX = Math.max(0, (preview.clientWidth * zoomLevel - preview.clientWidth) / 2);
+    const maxY = Math.max(0, (preview.clientHeight * zoomLevel - preview.clientHeight) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, startPanX + event.clientX - dragStartX));
+    panY = Math.max(-maxY, Math.min(maxY, startPanY + event.clientY - dragStartY));
+    preview.style.setProperty("--lightbox-pan-x", panX + "px");
+    preview.style.setProperty("--lightbox-pan-y", panY + "px");
+  });
+  function stopDragging() {
+    dragging = false;
+    preview.classList.remove("is-dragging");
+  }
+  preview.addEventListener("pointerup", stopDragging);
+  preview.addEventListener("pointercancel", stopDragging);
+  preview.addEventListener("lostpointercapture", stopDragging);
   preview.addEventListener("dblclick", event => {
     event.preventDefault();
     setZoom(zoomLevel > 1 ? 1 : 2);
