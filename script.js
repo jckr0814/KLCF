@@ -18,7 +18,7 @@ const translations = {
     description: "接棒者基督教会——一个在吉隆坡的基督徒团契群体。",
     nav: ["首页", "关于我们", "活动", "地点", "照片集", "联系我们"],
     heroEyebrow: "接棒者基督教会",
-    heroTitle: "在信心、盼望与爱中一同成长。",
+    heroTitle: "在信、望与爱中一同成长。",
     heroText: "一个敬拜上帝、建立真挚关系，并在基督徒群体中一同成长的地方。",
     heroButtons: ["近期活动", "了解更多"],
     scroll: "滚动至关于我们",
