@@ -226,3 +226,59 @@ languageButtons.forEach(button => {
 
 const savedLanguage = localStorage.getItem("klcf-language");
 applyLanguage(savedLanguage === "en" ? "en" : "zh");
+
+
+// Gallery lightbox: tap any real gallery photo to view it larger.
+(() => {
+  const lightbox = document.querySelector("#gallery-lightbox");
+  if (!lightbox) return;
+  const preview = lightbox.querySelector(".lightbox-content img");
+  const caption = lightbox.querySelector(".lightbox-content figcaption");
+  const photos = () => Array.from(document.querySelectorAll(".gallery-grid .gallery-item img"));
+  let activeIndex = 0;
+  let previousOverflow = "";
+
+  function showPhoto(index) {
+    const items = photos();
+    if (!items.length) return;
+    activeIndex = (index + items.length) % items.length;
+    const source = items[activeIndex];
+    preview.src = source.currentSrc || source.src;
+    preview.alt = source.alt || "";
+    caption.textContent = source.closest("figure")?.querySelector("figcaption")?.textContent || source.alt || "";
+    const multiple = items.length > 1;
+    lightbox.querySelector(".lightbox-prev").hidden = !multiple;
+    lightbox.querySelector(".lightbox-next").hidden = !multiple;
+  }
+
+  function openPhoto(index) {
+    previousOverflow = document.body.style.overflow;
+    showPhoto(index);
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    lightbox.querySelector(".lightbox-close").focus();
+  }
+
+  function closePhoto() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = previousOverflow;
+  }
+
+  document.querySelectorAll(".gallery-grid .gallery-item img").forEach((photo, index) => {
+    photo.addEventListener("click", () => openPhoto(index));
+  });
+  lightbox.querySelector(".lightbox-close").addEventListener("click", closePhoto);
+  lightbox.querySelector(".lightbox-prev").addEventListener("click", () => showPhoto(activeIndex - 1));
+  lightbox.querySelector(".lightbox-next").addEventListener("click", () => showPhoto(activeIndex + 1));
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox || event.target === preview) closePhoto();
+  });
+  document.addEventListener("keydown", event => {
+    if (!lightbox.classList.contains("is-open")) return;
+    if (event.key === "Escape") closePhoto();
+    if (event.key === "ArrowLeft") showPhoto(activeIndex - 1);
+    if (event.key === "ArrowRight") showPhoto(activeIndex + 1);
+  });
+})();
