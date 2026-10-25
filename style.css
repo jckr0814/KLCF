@@ -161,9 +161,11 @@ a { color: inherit; text-decoration: none; }
 .location-section .location-icon { margin-bottom: 12px; font-size: 24px; }
 .location-section .location-card h3 { margin: 0 0 10px; font-size: 20px; }
 .location-section .location-card p { overflow-wrap: anywhere; }
-.lightbox-content { overflow: hidden; }
-.lightbox-content img { transform: scale(var(--lightbox-zoom, 1)); transform-origin: center center; transition: transform .15s ease; cursor: grab; }
-.lightbox-content img.is-zoomed { cursor: grab; }
+.lightbox-content { overflow: hidden; position: relative; touch-action: none; }
+.lightbox-content img { transform: translate(var(--lightbox-pan-x, 0px), var(--lightbox-pan-y, 0px)) scale(var(--lightbox-zoom, 1)); transform-origin: center center; transition: transform .15s ease; cursor: grab; user-select: none; -webkit-user-drag: none; touch-action: none; }
+.lightbox-content img.is-zoomed { cursor: grab; transition: none; }
+.lightbox-content img.is-dragging { cursor: grabbing; }
+.lightbox-zoom-controls { pointer-events: auto; }
 .lightbox-zoom-controls { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; z-index: 2; }
 .lightbox-zoom-controls button { min-width: 42px; height: 40px; padding: 0 12px; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; background: rgba(255,255,255,.14); color: #fff; font-size: 20px; font-weight: 700; cursor: pointer; }
 .lightbox-zoom-controls .lightbox-zoom-reset { min-width: 66px; font-size: 14px; }
