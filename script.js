@@ -16,7 +16,7 @@ const translations = {
     lang: "zh-CN",
     title: "接棒者基督教会",
     description: "接棒者基督教会——一个在吉隆坡的基督徒团契群体。",
-    nav: ["首页", "关于我们", "活动", "地点", "照片集", "联系我们"],
+    nav: ["首页", "关于我们", "活动", "活动海报", "地点", "照片集", "联系我们"],
     heroEyebrow: "接棒者基督教会",
     heroTitle: "在信、望与爱中一同成长。",
     heroText: "一个敬拜上帝、建立真挚关系，并在基督徒群体中一同成长的地方。",
@@ -47,6 +47,9 @@ const translations = {
     ],
     weekly: "每周",
     everyTwoWeeks: "每两周",
+    postersEyebrow: "活动海报",
+    postersTitle: "活动与聚会海报",
+    postersIntro: "欢迎查看 KLCF 最新的活动资讯。点击海报可放大查看。",
     galleryEyebrow: "KLCF 的生活",
     galleryTitle: "团契点滴",
     galleryIntro: "一同敬拜、团契、学习，以及组成 KLCF 这个大家庭的每一个人。",
@@ -71,7 +74,7 @@ const translations = {
     brand: "接棒者基督教会",
     description: "Kuala Lumpur Christian Fellowship — a Christian fellowship community in Kuala Lumpur.",
     brand: "Kuala Lumpur Christian Fellowship",
-    nav: ["Home", "About", "Events", "Location", "Gallery", "Contact"],
+    nav: ["Home", "About", "Events", "Event Posters", "Location", "Gallery", "Contact"],
     heroEyebrow: "Kuala Lumpur Christian Fellowship",
     heroTitle: "Growing together in faith, hope and love.",
     heroText: "A place to worship God, build meaningful relationships and grow together as a Christian community.",
@@ -102,6 +105,9 @@ const translations = {
     ],
     weekly: "Weekly",
     everyTwoWeeks: "Biweekly",
+    postersEyebrow: "Event Posters",
+    postersTitle: "Events & Fellowship Posters",
+    postersIntro: "Explore upcoming KLCF events and fellowship gatherings. Click a poster to enlarge it.",
     galleryEyebrow: "Life At KLCF",
     galleryTitle: "Moments Together",
     galleryIntro: "A glimpse of worship, fellowship, learning and the people who make KLCF a community.",
@@ -178,6 +184,22 @@ function applyLanguage(lang) {
     card.querySelector(".event-date span").textContent = (i === 3 || i === 4) ? t.everyTwoWeeks : t.weekly;
   });
 
+  const posterHeading = document.querySelector("#posters .section-heading");
+  if (posterHeading) {
+    posterHeading.querySelector(".eyebrow").textContent = t.postersEyebrow;
+    posterHeading.querySelector("h2").textContent = t.postersTitle;
+    posterHeading.querySelector("p:last-child").textContent = t.postersIntro;
+    const captions = lang === "zh"
+      ? [["赞美 & 敬拜特会", "2026年11月7日（星期六） · 晚上 8:30–10:00"], ["快乐音乐班", "隔周星期六 · 下午 5:30–6:30 · 免费音乐课程"], ["快乐小组", "每逢星期四 · 上午 10:30–中午 12:00"], ["SETAPAK 小组", "隔周星期六 · 晚上 7:00–8:30"]]
+      : [["Praise & Worship Special", "Saturday, 7 November 2026 · 8:30–10:00 PM"], ["Happy Music Class", "Every other Saturday · 5:30–6:30 PM · Free music lessons"], ["Happy Group", "Every Thursday · 10:30 AM–12:00 PM"], ["Setapak Fellowship Group", "Every other Saturday · 7:00–8:30 PM"]];
+    posterHeading.querySelectorAll(".poster-card").forEach((card, i) => {
+      const title = card.querySelector("figcaption strong");
+      const detail = card.querySelector("figcaption span");
+      if (title) title.textContent = captions[i][0];
+      if (detail) detail.textContent = captions[i][1];
+    });
+  }
+
   const galleryHeading = document.querySelector("#gallery .section-heading");
   galleryHeading.querySelector(".eyebrow").textContent = t.galleryEyebrow;
   galleryHeading.querySelector("h2").textContent = t.galleryTitle;
@@ -228,7 +250,7 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
   if (!lightbox) return;
   const preview = lightbox.querySelector(".lightbox-content img");
   const caption = lightbox.querySelector(".lightbox-content figcaption");
-  const photos = () => Array.from(document.querySelectorAll(".gallery-grid .gallery-item img"));
+  const photos = () => Array.from(document.querySelectorAll(".gallery-grid .gallery-item img, .poster-grid .poster-card img"));
   let activeIndex = 0;
   let previousOverflow = "";
   let zoomLevel = 1;
@@ -281,7 +303,7 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
     document.body.style.overflow = previousOverflow;
   }
 
-  document.querySelectorAll(".gallery-grid .gallery-item img").forEach((photo, index) => {
+  document.querySelectorAll(".gallery-grid .gallery-item img, .poster-grid .poster-card img").forEach((photo, index) => {
     photo.addEventListener("click", () => openPhoto(index));
   });
   lightbox.querySelector(".lightbox-close").addEventListener("click", closePhoto);
