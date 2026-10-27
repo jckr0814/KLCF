@@ -189,3 +189,16 @@ a { color: inherit; text-decoration: none; }
   .lightbox-content figcaption { font-size: 14px; }
   .lightbox-zoom-controls { bottom: 12px; }
 }
+
+
+/* Event poster gallery */
+.posters-section { background: #fff; }
+.poster-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+.poster-card { margin: 0; min-width: 0; overflow: hidden; border-radius: 14px; background: #fff; border: 1px solid #e9e5df; box-shadow: 0 8px 24px rgba(35, 28, 20, .08); }
+.poster-card img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: #f7f5f1; cursor: zoom-in; transition: transform .25s ease; }
+.poster-card img:hover { transform: scale(1.015); }
+.poster-card figcaption { display: flex; flex-direction: column; gap: .4rem; padding: 1rem; }
+.poster-card figcaption strong { font-size: 1.05rem; line-height: 1.4; }
+.poster-card figcaption span { color: #626262; font-size: .92rem; line-height: 1.55; }
+@media (max-width: 1000px) { .poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .poster-grid { grid-template-columns: 1fr; gap: 1.1rem; } .poster-card { max-width: 440px; width: 100%; margin-inline: auto; } .poster-card figcaption { padding: .9rem; } }
