@@ -244,6 +244,52 @@ const savedLanguage = localStorage.getItem("klcf-language");
 applyLanguage(savedLanguage === "en" ? "en" : "zh");
 
 
+
+// Poster cards are generated from posters.json by the GitHub Actions OCR workflow.
+(async function loadEventPosters() {
+  const grid = document.querySelector("#poster-grid");
+  if (!grid) return;
+  try {
+    const response = await fetch("posters.json?v=" + Date.now(), { cache: "no-store" });
+    if (!response.ok) throw new Error("Poster manifest unavailable");
+    const posters = await response.json();
+    grid.replaceChildren();
+    if (!posters.length) {
+      const empty = document.createElement("p");
+      empty.textContent = document.documentElement.lang === "en"
+        ? "There are no active event posters right now."
+        : "目前没有活动海报。";
+      grid.append(empty);
+      return;
+    }
+    posters.forEach(poster => {
+      const figure = document.createElement("figure");
+      figure.className = "poster-card";
+      const img = document.createElement("img");
+      img.src = poster.src.split("/").map((part, index) => index ? encodeURIComponent(part) : part).join("/");
+      img.alt = poster.title + " event poster";
+      img.loading = "lazy";
+      const caption = document.createElement("figcaption");
+      const title = document.createElement("strong");
+      title.textContent = poster.title;
+      const detail = document.createElement("span");
+      detail.textContent = poster.eventDate
+        ? (document.documentElement.lang === "en" ? "Event date: " : "活动日期：") + poster.eventDate
+        : poster.recurring
+          ? (document.documentElement.lang === "en" ? "Recurring event" : "定期活动")
+          : (document.documentElement.lang === "en" ? "Date not detected — please check poster" : "未能识别日期，请检查海报");
+      caption.append(title, detail);
+      figure.append(img, caption);
+      grid.append(figure);
+    });
+  } catch (error) {
+    console.error(error);
+    grid.textContent = document.documentElement.lang === "en"
+      ? "Event posters are temporarily unavailable."
+      : "活动海报暂时无法显示。";
+  }
+})();
+
 // Gallery lightbox: tap any real gallery photo to view it larger.
 (() => {
   const lightbox = document.querySelector("#gallery-lightbox");
@@ -303,8 +349,11 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
     document.body.style.overflow = previousOverflow;
   }
 
-  document.querySelectorAll(".gallery-grid .gallery-item img, .poster-grid .poster-card img").forEach((photo, index) => {
-    photo.addEventListener("click", () => openPhoto(index));
+  document.addEventListener("click", event => {
+    const photo = event.target.closest(".gallery-grid .gallery-item img, .poster-grid .poster-card img");
+    if (!photo) return;
+    const index = photos().indexOf(photo);
+    if (index >= 0) openPhoto(index);
   });
   lightbox.querySelector(".lightbox-close").addEventListener("click", closePhoto);
   lightbox.querySelector(".lightbox-prev").addEventListener("click", () => showPhoto(activeIndex - 1));
