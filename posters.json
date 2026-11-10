@@ -1,20 +1,20 @@
 [
   {
+    "src": "Posters/Setapak小组.jpeg",
+    "title": "Setapak小组",
+    "eventDate": null,
+    "recurring": true
+  },
+  {
     "src": "Posters/快乐乐器班.jpeg",
     "title": "快乐乐器班",
     "eventDate": null,
-    "recurring": true
+    "recurring": false
   },
   {
     "src": "Posters/快乐小组.jpeg",
     "title": "快乐小组",
     "eventDate": null,
-    "recurring": true
-  },
-  {
-    "src": "Posters/Setapak小组.jpeg",
-    "title": "Setapak小组",
-    "eventDate": null,
-    "recurring": true
+    "recurring": false
   }
 ]
