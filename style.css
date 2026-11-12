@@ -5,7 +5,7 @@ a { color: inherit; text-decoration: none; }
 
 .site-header { position: fixed; inset: 0 0 auto; z-index: 1000; display: flex; align-items: center; gap: 24px; padding: 16px 5%; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0,0,0,.06); }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; flex-shrink: 0; }
-.brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #222; color: #fff; font-size: 12px; letter-spacing: 1px; flex: 0 0 auto; }
+.brand-logo { display: block; width: 48px; height: 54px; object-fit: contain; flex: 0 0 auto; background: transparent; }
 .brand-name { max-width: 260px; line-height: 1.15; font-size: 14px; }
 .nav { display: flex; justify-content: center; flex: 1; gap: clamp(14px, 2.1vw, 28px); font-size: 14px; font-weight: 600; }
 .nav a:hover, .text-link:hover { opacity: .6; }
@@ -202,3 +202,12 @@ a { color: inherit; text-decoration: none; }
 .poster-card figcaption span { color: #626262; font-size: .92rem; line-height: 1.55; }
 @media (max-width: 1000px) { .poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .poster-grid { grid-template-columns: 1fr; gap: 1.1rem; } .poster-card { max-width: 440px; width: 100%; margin-inline: auto; } .poster-card figcaption { padding: .9rem; } }
+
+
+/* KLCF identity logo */
+.brand-logo { border-radius: 4px; }
+@media (max-width: 600px) {
+  .brand { gap: 8px; }
+  .brand-logo { width: 38px; height: 44px; }
+  .brand-name { font-size: 13px; max-width: 150px; }
+}
