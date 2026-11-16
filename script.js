@@ -18,12 +18,12 @@ const translations = {
     description: "接棒者基督教会——一个在吉隆坡的基督徒团契群体。",
     nav: ["首页", "关于我们", "活动", "活动海报", "照片集", "联系我们"],
     heroEyebrow: "接棒者基督教会",
-    heroTitle: "在信、望与爱中一同成长。",
+    heroTitle: "在信、望与爱中一同成长",
     heroText: "一个敬拜上帝、建立真挚关系，并在基督徒群体中一同成长的地方。",
     heroButtons: ["近期活动", "了解更多"],
     scroll: "滚动至关于我们",
     aboutEyebrow: "关于我们",
-    aboutTitle: "我们要成为历史的缔造者，和世界的震撼者！",
+    aboutTitle: "我们要成为历史的缔造者，世界的震撼者！",
     aboutIntro: "认识一个委身于敬拜上帝、在祂的话语中成长、建立真挚团契，并以基督的爱关怀他人的群体。",
     aboutText: [
       "接棒者基督教会是一个让我们一同敬拜上帝、在信心中成长，并彼此鼓励的基督徒群体。",
@@ -145,7 +145,12 @@ function applyLanguage(lang) {
   setText(".brand-name", lang === "zh" ? "接棒者基督教会" : "Kuala Lumpur Christian Fellowship");
   document.querySelector(".brand")?.setAttribute("aria-label", lang === "zh" ? "接棒者基督教会首页" : "Kuala Lumpur Christian Fellowship home");
   setText(".hero .eyebrow", t.heroEyebrow);
-  setText(".hero h1", t.heroTitle);
+  const heroHeading = document.querySelector(".hero h1");
+  if (heroHeading) {
+    heroHeading.innerHTML = lang === "zh"
+      ? "在信、望与爱中<br>一同成长"
+      : t.heroTitle;
+  }
   setText(".hero-text", t.heroText);
   document.querySelectorAll(".hero-actions .button").forEach((button, i) => button.textContent = t.heroButtons[i]);
 
@@ -157,7 +162,7 @@ function applyLanguage(lang) {
     aboutHeading.querySelector(".eyebrow").textContent = t.aboutEyebrow;
     const aboutTitle = aboutHeading.querySelector("h2");
     if (lang === "zh") {
-      aboutTitle.innerHTML = '<span class="about-title-line">我们要成为历史的缔造者，</span><span class="about-title-line">和世界的震撼者！</span>';
+      aboutTitle.innerHTML = '<span class="about-title-line">我们要成为历史的缔造者，</span><span class="about-title-line">世界的震撼者！</span>';
       aboutTitle.setAttribute("aria-label", t.aboutTitle);
     } else {
       aboutTitle.textContent = t.aboutTitle;
