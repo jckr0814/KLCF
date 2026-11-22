@@ -66,6 +66,8 @@ const translations = {
     callAction: "致电 KLCF →",
     facebook: "脸书 Facebook",
     facebookAction: "访问我们的 Facebook 专页 →",
+    youtube: "YouTube 频道",
+    youtubeAction: "访问我们的 YouTube 频道 →",
     footer: "版权所有。"
   },
   en: {
@@ -124,6 +126,8 @@ const translations = {
     callAction: "Call KLCF →",
     facebook: "Facebook",
     facebookAction: "Visit our Facebook page →",
+    youtube: "YouTube Channel",
+    youtubeAction: "Visit our YouTube channel →",
     footer: "All rights reserved."
   }
 };
@@ -231,6 +235,8 @@ function applyLanguage(lang) {
   contactCards[0].querySelector(".contact-action").textContent = t.callAction;
   contactCards[1].querySelector("h3").textContent = t.facebook;
   contactCards[1].querySelector(".contact-action").textContent = t.facebookAction;
+  contactCards[2].querySelector("h3").textContent = t.youtube;
+  contactCards[2].querySelector(".contact-action").textContent = t.youtubeAction;
 
   setText(".footer p", `© ${new Date().getFullYear()} ${t.title}. ${t.footer}`);
   languageButtons.forEach(button => {
