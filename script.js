@@ -288,7 +288,7 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
         ? (document.documentElement.lang === "en" ? "Event date: " : "活动日期：") + poster.eventDate
         : poster.recurring
           ? (document.documentElement.lang === "en" ? "Recurring event" : "定期活动")
-          : (document.documentElement.lang === "en" ? "Date not detected — please check poster" : "未能识别日期，请检查海报");
+          : (document.documentElement.lang === "en" ? "Regular activity" : "定期活动");
       caption.append(title, detail);
       figure.append(img, caption);
       grid.append(figure);
