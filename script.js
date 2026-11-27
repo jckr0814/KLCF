@@ -341,7 +341,11 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
     preview.src = source.currentSrc || source.src;
     preview.alt = source.alt || "";
     setZoom(1);
-    caption.textContent = source.closest("figure")?.querySelector("figcaption")?.textContent || source.alt || "";
+    const sourceFigure = source.closest("figure");
+    const posterCard = source.closest(".poster-card");
+    caption.textContent = posterCard
+      ? (sourceFigure?.querySelector("figcaption strong")?.textContent || source.alt || "")
+      : (sourceFigure?.querySelector("figcaption")?.textContent || source.alt || "");
     const multiple = items.length > 1;
     lightbox.querySelector(".lightbox-prev").hidden = !multiple;
     lightbox.querySelector(".lightbox-next").hidden = !multiple;
