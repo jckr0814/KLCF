@@ -9,18 +9,18 @@
     "src": "Posters/儿童主日学.jpeg",
     "title": "儿童主日学",
     "eventDate": null,
-    "recurring": false
+    "recurring": true
   },
   {
     "src": "Posters/快乐乐器班.jpeg",
     "title": "快乐乐器班",
     "eventDate": null,
-    "recurring": false
+    "recurring": true
   },
   {
     "src": "Posters/快乐小组.jpeg",
     "title": "快乐小组",
     "eventDate": null,
-    "recurring": false
+    "recurring": true
   }
 ]
