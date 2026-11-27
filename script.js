@@ -284,13 +284,11 @@ applyLanguage(savedLanguage === "en" ? "en" : "zh");
       const title = document.createElement("strong");
       title.textContent = poster.title;
       const detail = document.createElement("span");
-      detail.textContent = poster.title === "Setapak小组"
-        ? (document.documentElement.lang === "en" ? "Biweekly fellowship" : "隔周团契聚会")
-        : poster.eventDate
-          ? (document.documentElement.lang === "en" ? "Event date: " : "活动日期：") + poster.eventDate
-          : poster.recurring
-            ? (document.documentElement.lang === "en" ? "Recurring event" : "定期活动")
-            : (document.documentElement.lang === "en" ? "Regular activity" : "定期活动");
+      detail.textContent = poster.eventDate
+        ? (document.documentElement.lang === "en" ? "Event date: " : "活动日期：") + poster.eventDate
+        : poster.recurring
+          ? (document.documentElement.lang === "en" ? "Recurring event" : "定期活动")
+          : (document.documentElement.lang === "en" ? "Regular activity" : "定期活动");
       caption.append(title, detail);
       figure.append(img, caption);
       grid.append(figure);
